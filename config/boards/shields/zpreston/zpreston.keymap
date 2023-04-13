@@ -1,0 +1,273 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+// Layer aliases
+#define DEF 0
+#define ONE 1
+#define TWO 2
+#define THR 3
+
+// ?Key position groups?
+#define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
+#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
+#define THUMBS_L 36 37 38
+#define THUMBS_R 39 40 41
+
+#define tapping_term_fast 205
+#define tapping_term_slow 215
+#define quick_tap_term 200
+
+/ {
+    behaviors {
+        clt: custom_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MO_KP";
+            #binding-cells = <2>;
+            tapping-term-ms = tapping_term_fast;//<205>;
+            quick-tap-ms = quick_tap_term;//<200>;
+            flavor = "hold-preferred";
+            bindings = <&mo>, <&kp>;
+        //     hold-trigger-key-positions = <KEYS THUMBS>;
+        //     hold-trigger-on-release;
+        //     global-quick-tap;
+        };
+        // &clt 2 RET   // LT(2, KC_ENT)  // allow quick-tap hold for repeat  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+        // &clt 1 BSPC   // LT(1, KC_BSPC)  // allow quick-tap hold for repeat  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+
+
+        aml: alpha_mods_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_MT_L";
+            #binding-cells = <2>;
+            tapping-term-ms = tapping_term_slow;//<215>;//<250>;
+            quick-tap-ms = quick_tap_term;//<200>;//<150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        //     hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+        //     hold-trigger-on-release;
+            global-quick-tap;  // ???????????????
+        };
+        amr: alpha_mods_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_MT_R";
+            #binding-cells = <2>;
+            tapping-term-ms = tapping_term_slow;//<215>;//<250>;
+            quick-tap-ms = quick_tap_term;//<200>;//<150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        //     hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+        //     hold-trigger-on-release;
+            global-quick-tap;  // ???????????????
+        };
+        // &aml LCTRL A   // MT(MOD_LCTL, KC_A)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+        // &aml LALT Z   // MT(MOD_LALT, KC_Z)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+        // &aml LCTRL ESC   // MT(MOD_LCTL, KC_ESC)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+        // &aml LCTRL F11   // MT(MOD_LCTL, KC_F11)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+        // &amr RCTRL SEMI   // MT(MOD_RCTL, KC_SCLN)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+        // &amr RGUI BSLH   // MT(MOD_RGUI, KC_BSLS)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+
+
+        td_mt_aml: tap_dance_mod_tap_aml {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_MOD_TAP_AML";
+            #binding-cells = <0>;
+            tapping-term-ms = quick_tap_term;//<200>;
+            bindings = <&aml>, <&kp>;//<&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
+        };
+        td_mt_amr: tap_dance_mod_tap_amr {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_MOD_TAP_AMR";
+            #binding-cells = <0>;
+            tapping-term-ms = quick_tap_term;//<200>;
+            bindings = <&amr>, <&kp>;//<&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
+        };
+        // &td_mt_amr RCTRL SQT SEMI   // TD(TD_CTL_QUOT_SCLN)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+        // &td_mt_amr RALT FSLH BSLH   // TD(TD_ALT_SLSH_BSLS)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+        // &td_mt_aml LCTRL TAB CAPS   // TD(TD_CTL_TAB_CAPS)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+
+
+        // &? LALT LGUI   // TD(TD_ALT_GUI)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
+
+
+        asl: alpha_shift_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_SFT_L";
+            #binding-cells = <2>;
+            tapping-term-ms = tapping_term_fast;//<205>;//<200>;
+            quick-tap-ms = <-1>;//<150>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+        //     hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+        //     hold-trigger-on-release;
+        //     global-quick-tap;
+        };
+        asr: alpha_shift_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_SFT_R";
+            #binding-cells = <2>;
+            tapping-term-ms = tapping_term_fast;//<205>;//<200>;
+            quick-tap-ms = <-1>;//<150>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+        //     hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+        //     hold-trigger-on-release;
+        //     global-quick-tap;
+        };
+        // &asl LSHFT SPACE   // MT(MOD_LSFT, KC_SPC)  // only allow single taps (no quick-tap hold)  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+        // &asr RSHFT SPACE   // MT(MOD_RSFT, KC_SPC)  // only allow single taps (no quick-tap hold)  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+        // &asl LSHFT RET   // MT(MOD_LSFT, KC_ENT)  // only allow single taps (no quick-tap hold)  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+        // &asr RSHFT BSPC   // MT(MOD_RSFT, KC_BSPC)  // only allow single taps (no quick-tap hold)  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+
+
+        lsl: layer_shift_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_SFT_L";
+            #binding-cells = <2>;
+            tapping-term-ms = tapping_term_fast;//<205>;//<200>;
+            quick-tap-ms = <-1>;//<150>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&tog>;
+        //     hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+        //     hold-trigger-on-release;
+        //     global-quick-tap;
+        };
+        lsr: layer_shift_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_SFT_R";
+            #binding-cells = <2>;
+            tapping-term-ms = tapping_term_fast;//<205>;//<200>;
+            quick-tap-ms = <-1>;//<150>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&tog>;
+        //     hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+        //     hold-trigger-on-release;
+        //     global-quick-tap;
+        };
+        // &lsl LSHFT 3   // TD(TD_LSFT_TG3)  // ?  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+        // &lsr RSHFT 3   // TD(TD_RSFT_TG3)  // ?  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+    };
+
+
+        keymap {
+                compatible = "zmk,keymap";
+
+
+                layer_default {
+//         //,-------------------------------------------------------------------.                    ,-------------------------------------------------------------------.
+//            XXXXXXX, KC_Q,                  KC_W,    KC_E,    KC_R,    KC_T,                            KC_Y,    KC_U,    KC_I,    KC_O,                  KC_P, XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------|                    |--------+--------+--------+--------+----------------------+--------|
+//            XXXXXXX, MT(MOD_LCTL, KC_A),    KC_S,    KC_D,    KC_F,    KC_G,                            KC_H,    KC_J,    KC_K,    KC_L,  TD(TD_CTL_QUOT_SCLN), XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------|                    |--------+--------+--------+--------+----------------------+--------|
+//            XXXXXXX, MT(MOD_LALT, KC_Z),    KC_X,    KC_C,    KC_V,    KC_B,                            KC_N,    KC_M, KC_COMM,  KC_DOT,  TD(TD_ALT_SLSH_BSLS), XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+----------------------+--------|
+//       LT(2, KC_ENT),               LT(1, KC_BSPC),                MT(MOD_LSFT, KC_SPC),    MT(MOD_RSFT, KC_SPC),                LT(1, KC_BSPC),               LT(2, KC_ENT)
+//                  //              _______,               _______,               _______,    _______,               _______,               _______
+//                  //----------------------+----------------------+----------------------'  `----------------------+----------------------+----------------------
+//                                             //`----------------------------------------'  `----------------------------------------'
+
+// -----------------------------------------------------------------------------------------
+// | XXXXXXX |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P            | XXXXXXX |
+// | XXXXXXX |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  [RCTRL ' ;]  | XXXXXXX |
+// | XXXXXXX |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  [RALT  / \]  | XXXXXXX |
+//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+
+                        bindings = <
+   &trans   &kp Q          &kp W   &kp E        &kp R         &kp T                 &kp Y              &kp U         &kp I       &kp O     &kp P                       &trans
+   &trans   &aml LCTRL A   &kp S   &kp D        &kp F         &kp G                 &kp H              &kp J         &kp K       &kp L     &td_mt_amr RCTRL SQT SEMI   &trans
+   &trans   &aml LALT Z    &kp X   &kp C        &kp V         &kp B                 &kp N              &kp M         &kp COMMA   &kp DOT   &td_mt_amr RALT FSLH BSLH   &trans
+                                   &clt 2 RET   &clt 1 BSPC   &asl LSHFT SPACE      &asr RSHFT SPACE   &clt 1 BSPC   &clt 2 RET
+                        >;
+                };
+
+
+                layer_one {
+//         //,-------------------------------------------------------------------.                    ,-------------------------------------------------------------------.
+//            XXXXXXX, KC_1,                  KC_2,    KC_3,    KC_4,    KC_5,                            KC_6,    KC_7,    KC_8,    KC_9,                  KC_0, XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------|                    |--------+--------+--------+--------+----------------------+--------|
+//            XXXXXXX, TD(TD_CTL_TAB_CAPS),   KC_PLUS, KC_MINS, KC_UNDS, KC_EQL,                         KC_F5, KC_BTN1, KC_BTN2,  PLOOPY, MT(MOD_RCTL, KC_SCLN), XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------|                    |--------+--------+--------+--------+----------------------+--------|
+//            XXXXXXX, KC_LGUI,               C(KC_X), C(KC_V), C(KC_C), C(KC_SLSH),                   C(KC_R), C(KC_C), C(KC_V), C(KC_X), MT(MOD_RGUI, KC_SLSH), XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+----------------------+--------|
+//                      TG(3),               _______,                MT(MOD_LSFT, KC_ENT),    MT(MOD_RSFT, KC_BSPC),               _______,               TG(3)
+//                  //              _______,               _______,               _______,    _______,               _______,               _______
+//                  //----------------------+----------------------+----------------------'  `----------------------+----------------------+----------------------
+//                                             //`----------------------------------------'  `----------------------------------------'
+
+// -----------------------------------------------------------------------------------------
+// | XXXXXXX |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | XXXXXXX |
+// | XXXXXXX | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     | XXXXXXX |
+// | XXXXXXX |     |     |     |     |     |   |     |     |     |     |     | XXXXXXX |
+//                    | tog3 |     | SPC |   | ENT |     | tog3 |
+
+                        bindings = <
+   &trans   &kp N1                     &kp N2     &kp N3       &kp N4      &kp N5               &kp N6           &kp N7      &kp N8      &kp N9      &kp N0           &trans
+   &trans   &td_mt_aml LCTRL TAB CAPS  &kp PLUS   &kp MINUS    &kp UNDER   &kp EQUAL            &kp F5           &trans      &trans      &trans      &amr RCTRL SEMI  &trans
+   &trans   &kp LGUI                   &kp LC(X)  &kp LC(V)    &kp LC(C)   &kp LC(FSLH)         &kp LC(R)        &kp LC(C)   &kp LC(V)   &kp LC(X)   &amr RGUI BSLH   &trans
+                          	                  &tog 3       &trans      &asl LSHFT RET       &asr RSHFT BSPC  &trans      &tog 3
+                        >;
+                };
+
+
+                layer_two {
+//         //,-------------------------------------------------------------------.                    ,-------------------------------------------------------------------.
+//            XXXXXXX, KC_EXLM,               KC_AT,   KC_HASH, KC_DLR,   SLSH_ASTR,                 ASTR_SLSH, KC_PERC, KC_CIRC, KC_AMPR,               KC_ASTR, XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------|                    |--------+--------+--------+--------+----------------------+--------|
+//            XXXXXXX, MT(MOD_LCTL, KC_ESC),  KC_GRV,  S(A(KC_F1)), C(A(KC_TAB)), KC_LPRN,             KC_RPRN, KC_LEFT,   KC_UP, KC_DOWN,               KC_RGHT, XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------|                    |--------+--------+--------+--------+----------------------+--------|
+//            XXXXXXX, TD(TD_ALT_GUI),        CLEAR_ALL, PASTE_VAL, KC_F2,  KC_LBRC,                   KC_RBRC, KC_PGUP, KC_PGDN, KC_WH_U,               KC_WH_D, XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+----------------------+--------|
+//              _______,                 TG(3),                      MT(MOD_LSFT, KC_ENT),    MT(MOD_RSFT, KC_BSPC),                     TG(3),                 _______
+//                  //              _______,               _______,               _______,    _______,               _______,               _______
+//                  //----------------------+----------------------+----------------------'  `----------------------+----------------------+----------------------
+//                                             //`----------------------------------------'  `----------------------------------------'
+
+// -----------------------------------------------------------------------------------------
+// | XXXXXXX |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | XXXXXXX |
+// | XXXXXXX |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  | XXXXXXX |
+// | XXXXXXX |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" | XXXXXXX |
+//                    |     | tog3 | SPC |   | ENT | tog3 |     |
+
+                        bindings = <
+   &trans   &kp EXCL         &kp AT     &kp HASH        &kp DLLR         &trans                  &trans               &kp PRCNT  &kp CARET  &kp AMPS         &kp ASTRK          &trans
+   &trans   &aml LCTRL ESC   &kp GRAVE  &kp LS(LA(F1))  &kp LC(LA(TAB))  &kp LPAR                &kp RPAR             &kp LEFT   &kp UP     &kp DOWN         &kp RIGHT          &trans
+   &trans   &kp LALT         &trans     &trans          &kp F2           &kp LBKT                &kp RBKT             &kp PG_UP  &kp PG_DN  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN  &trans
+                    	                &trans          &tog 3           &asl LSHFT LS(RET)      &asr RSHFT RS(BSPC)  &tog 3     &trans
+                        >;
+                };
+
+
+                layer_three {
+//         //,-------------------------------------------------------------------.                    ,-------------------------------------------------------------------.
+//            XXXXXXX, KC_F1,                 KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,                KC_F10, XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------|                    |--------+--------+--------+--------+----------------------+--------|
+//            XXXXXXX, MT(MOD_LCTL, KC_F11),  KC_F12,  F_PAINT, AFIT_COL, XXXXXXX,                      KC_INS, XXXXXXX, XXXXXXX, XXXXXXX,               KC_RCTL, XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------|                    |--------+--------+--------+--------+----------------------+--------|
+//            XXXXXXX, KC_LALT,               KC_LGUI, XXXXXXX, ONEPASS, WRKPASS,                      DT_PRNT,   DT_UP, DT_DOWN, KC_RGUI,               KC_RALT, XXXXXXX,
+//         //|--------+----------------------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+----------------------+--------|
+//                                  _______,               _______,       TD(TD_LSFT_TG3),    TD(TD_RSFT_TG3),       _______,               _______
+//                  //              _______,               _______,               _______,    _______,               _______,               _______
+//                  //----------------------+----------------------+----------------------'  `----------------------+----------------------+----------------------
+//                                             //`----------------------------------------'  `----------------------------------------'
+
+// -----------------------------------------------------------------------------------------
+// | XXXXXXX |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | XXXXXXX |
+// | XXXXXXX | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     | XXXXXXX |
+// | XXXXXXX |     |     |     |     |     |   |     |     |     |     |     | XXXXXXX |
+//                    |     |     | tog3 |   | tog3 |     |     |
+
+                        bindings = <
+   &trans  &kp F1          &kp F2     &kp F3   &kp F4   &kp F5                &kp F6         &kp F7        &kp F8        &kp F9         &kp F10    &trans
+   &trans  &aml LCTRL F11  &kp F12    &trans   &trans   &bt BT_SEL 0          &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &kp RCTRL  &trans
+   &trans  &kp LALT        &kp LGUI   &trans   &trans   &trans                &bt BT_CLR     &trans        &trans        &kp RGUI       &kp RALT   &trans
+                                      &trans   &trans   &lsl LSHFT 3          &lsr RSHFT 3   &trans        &trans
+                        >;
+                };
+        };
+};
