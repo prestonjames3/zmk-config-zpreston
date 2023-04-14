@@ -24,6 +24,11 @@
 #define tapping_term_slow 215
 #define quick_tap_term 200
 
+&mt {
+    tapping-term-ms = <tapping_term_fast>;
+    flavor = "balanced";//"tap-preferred";
+};
+
 / {
     behaviors {
         clt: custom_layer_tap {
@@ -94,7 +99,7 @@
             label = "TAP_DANCE_AMR_RCTRL_SQT_SEMI";
             #binding-cells = <0>;
             tapping-term-ms = <tapping_term_fast>;
-            bindings = <&amr RCTRL SQT>, <&kp SEMI>;
+            bindings = <&mt RCTRL SQT>, <&kp SEMI>;
         };
         // &td_mt_amr RCTRL SQT SEMI
         td_amr_2: tap_dance_amr_ralt_fslh_bslh {
@@ -102,7 +107,7 @@
             label = "TAP_DANCE_AMR_RALT_FSLH_BSLH";
             #binding-cells = <0>;
             tapping-term-ms = <tapping_term_fast>;
-            bindings = <&amr RALT FSLH>, <&kp BSLH>;
+            bindings = <&mt RALT FSLH>, <&kp BSLH>;
         };
         // &td_mt_amr RALT FSLH BSLH
         td_aml_1: tap_dance_aml_lctrl_tab_caps {
@@ -110,7 +115,7 @@
             label = "TAP_DANCE_AML_LCTRL_TAB_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <tapping_term_fast>;
-            bindings = <&aml LCTRL TAB>, <&kp CAPS>;
+            bindings = <&mt LCTRL TAB>, <&kp CAPS>;
         };
         // &td_mt_aml LCTRL TAB CAPS
 
