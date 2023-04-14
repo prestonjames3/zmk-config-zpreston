@@ -39,9 +39,9 @@
             quick-tap-ms = <quick_tap_term>;//<200>;
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;
-        //     hold-trigger-key-positions = <KEYS THUMBS>;
-        //     hold-trigger-on-release;
-        //     global-quick-tap;
+            // hold-trigger-key-positions = <KEYS THUMBS>;
+            // hold-trigger-on-release;
+            // global-quick-tap;
         };
         // &clt 2 RET   // LT(2, KC_ENT)  // allow quick-tap hold for repeat  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
         // &clt 1 BSPC   // LT(1, KC_BSPC)  // allow quick-tap hold for repeat  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
@@ -55,9 +55,9 @@
             quick-tap-ms = <quick_tap_term>;//<200>;//<150>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
-        //     hold-trigger-key-positions = <KEYS_R THUMBS_R>;
-        //     hold-trigger-on-release;
-            global-quick-tap;  // ???????????????
+            // hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+            // hold-trigger-on-release;
+            // global-quick-tap;  // ???????????????
         };
         amr: alpha_mods_r {
             compatible = "zmk,behavior-hold-tap";
@@ -67,9 +67,9 @@
             quick-tap-ms = <quick_tap_term>;//<200>;//<150>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
-        //     hold-trigger-key-positions = <KEYS_L THUMBS_L>;
-        //     hold-trigger-on-release;
-            global-quick-tap;  // ???????????????
+            // hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+            // hold-trigger-on-release;
+            // global-quick-tap;  // ???????????????
         };
         // &aml LCTRL A   // MT(MOD_LCTL, KC_A)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
         // &aml LALT Z   // MT(MOD_LALT, KC_Z)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
@@ -93,7 +93,6 @@
         //     tapping-term-ms = <tapping_term_fast>;//<200>;
         //     bindings = <&amr>, <&kp>;//<&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
         // };
-
         td_amr_1: tap_dance_amr_rctrl_sqt_semi {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_AMR_RCTRL_SQT_SEMI";
@@ -101,7 +100,6 @@
             tapping-term-ms = <tapping_term_fast>;
             bindings = <&amr RCTRL SQT>, <&kp SEMI>;
         };
-        // &td_mt_amr RCTRL SQT SEMI
         td_amr_2: tap_dance_amr_ralt_fslh_bslh {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_AMR_RALT_FSLH_BSLH";
@@ -109,7 +107,6 @@
             tapping-term-ms = <tapping_term_fast>;
             bindings = <&amr RALT FSLH>, <&kp BSLH>;
         };
-        // &td_mt_amr RALT FSLH BSLH
         td_aml_1: tap_dance_aml_lctrl_tab_caps {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_AML_LCTRL_TAB_CAPS";
@@ -117,9 +114,6 @@
             tapping-term-ms = <tapping_term_fast>;
             bindings = <&aml LCTRL TAB>, <&kp CAPS>;
         };
-        // &td_mt_aml LCTRL TAB CAPS
-
-
         // &td_mt_amr RCTRL SQT SEMI   // TD(TD_CTL_QUOT_SCLN)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
         // &td_mt_amr RALT FSLH BSLH   // TD(TD_ALT_SLSH_BSLS)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
         // &td_mt_aml LCTRL TAB CAPS   // TD(TD_CTL_TAB_CAPS)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
@@ -136,9 +130,9 @@
             quick-tap-ms = <0>;//<150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
-        //     hold-trigger-key-positions = <KEYS_R THUMBS_R>;
-        //     hold-trigger-on-release;
-        //     global-quick-tap;
+            // hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+            // hold-trigger-on-release;
+            // global-quick-tap;
         };
         asr: alpha_shift_r {
             compatible = "zmk,behavior-hold-tap";
@@ -148,9 +142,9 @@
             quick-tap-ms = <0>;//<150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
-        //     hold-trigger-key-positions = <KEYS_L THUMBS_L>;
-        //     hold-trigger-on-release;
-        //     global-quick-tap;
+            // hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+            // hold-trigger-on-release;
+            // global-quick-tap;
         };
         // &asl LSHFT SPACE   // MT(MOD_LSFT, KC_SPC)  // only allow single taps (no quick-tap hold)  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
         // &asr RSHFT SPACE   // MT(MOD_RSFT, KC_SPC)  // only allow single taps (no quick-tap hold)  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
@@ -166,9 +160,9 @@
             quick-tap-ms = <0>;//<150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&tog>;
-        //     hold-trigger-key-positions = <KEYS_R THUMBS_R>;
-        //     hold-trigger-on-release;
-        //     global-quick-tap;
+            // hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+            // hold-trigger-on-release;
+            // global-quick-tap;
         };
         lsr: layer_shift_r {
             compatible = "zmk,behavior-hold-tap";
@@ -178,13 +172,63 @@
             quick-tap-ms = <0>;//<150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&tog>;
-        //     hold-trigger-key-positions = <KEYS_L THUMBS_L>;
-        //     hold-trigger-on-release;
-        //     global-quick-tap;
+            // hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+            // hold-trigger-on-release;
+            // global-quick-tap;
         };
         // &lsl LSHFT 3   // TD(TD_LSFT_TG3)  // ?  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
         // &lsr RSHFT 3   // TD(TD_RSFT_TG3)  // ?  |  Immediately select the hold action when another key is pressed. (get_hold_on_other_key_press = true)
+
+
+        bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_DELETE";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            // keep-mods = <(MOD_RSFT)>;
+        };
+        lpar_labkt: lpar_labkt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LPAR_LABKT";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR>, <&kp LT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        rpar_rabkt: rpar_rabkt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RPAR_RABKT";
+            #binding-cells = <0>;
+            bindings = <&kp RPAR>, <&kp GT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
+
+
+    // macros {
+    //     zed_em_kay: zed_em_kay {
+    //         label = "ZM_zed_em_kay";
+    //         compatible = "zmk,behavior-macro";
+    //         #binding-cells = <0>;
+    //         bindings
+    //             = <&macro_press &kp LSHFT>
+    //             , <&macro_tap &kp Z &kp M &kp K>
+    //             , <&macro_release &kp LSHFT>
+    //             ;
+    //     };
+    //     brackets: brackets {
+    //         label = "brackets";
+    //         compatible = "zmk,behavior-macro";
+    //         #binding-cells = <0>;
+    //         wait-ms = <40>;
+    //         tap-ms = <40>;
+    //         bindings = <&macro_tap &kp LBKT &kp RBKT>;
+    //     };
+    //     // FSLH_ASTRK  &kp FSLH &kp ASTRK
+    //     // ASTRK_FSLH  &kp ASTRK &kp FSLH
+    //     // ONEPASS  "RedGr33nBlue"
+    //     // WRKPASS  "@11ig@toR1"
+    // };
 
 
         keymap {
@@ -268,7 +312,7 @@
 
                         bindings = <
    &trans   &kp EXCL         &kp AT     &kp HASH        &kp DLLR         &trans                  &trans               &kp PRCNT  &kp CARET  &kp AMPS         &kp ASTRK          &trans
-   &trans   &aml LCTRL ESC   &kp GRAVE  &kp LS(LA(F1))  &kp LC(LA(TAB))  &kp LPAR                &kp RPAR             &kp LEFT   &kp UP     &kp DOWN         &kp RIGHT          &trans
+   &trans   &aml LCTRL ESC   &kp GRAVE  &kp LS(LA(F1))  &kp LC(LA(TAB))  &lpar_labkt             &rpar_rabkt          &kp LEFT   &kp UP     &kp DOWN         &kp RIGHT          &trans
    &trans   &kp LALT         &trans     &trans          &kp F2           &kp LBKT                &kp RBKT             &kp PG_UP  &kp PG_DN  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN  &trans
                     	                &trans          &tog 3           &asl LSHFT RET          &asr RSHFT DEL       &tog 3     &trans
                         >;
