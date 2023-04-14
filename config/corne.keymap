@@ -270,7 +270,7 @@
    &trans   &kp EXCL         &kp AT     &kp HASH        &kp DLLR         &trans                  &trans               &kp PRCNT  &kp CARET  &kp AMPS         &kp ASTRK          &trans
    &trans   &aml LCTRL ESC   &kp GRAVE  &kp LS(LA(F1))  &kp LC(LA(TAB))  &kp LPAR                &kp RPAR             &kp LEFT   &kp UP     &kp DOWN         &kp RIGHT          &trans
    &trans   &kp LALT         &trans     &trans          &kp F2           &kp LBKT                &kp RBKT             &kp PG_UP  &kp PG_DN  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN  &trans
-                    	                &trans          &tog 3           &asl LSHFT LS(RET)      &asr RSHFT RS(BSPC)  &tog 3     &trans
+                    	                &trans          &tog 3           &asl LSHFT RET          &asr RSHFT DEL       &tog 3     &trans
                         >;
                 };
 
