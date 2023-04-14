@@ -133,7 +133,7 @@
             label = "ALPHA_SFT_L";
             #binding-cells = <2>;
             tapping-term-ms = <tapping_term_fast>;//<205>;//<200>;
-            quick-tap-ms = <-1>;//<150>;
+            quick-tap-ms = <0>;//<150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         //     hold-trigger-key-positions = <KEYS_R THUMBS_R>;
@@ -145,7 +145,7 @@
             label = "ALPHA_SFT_R";
             #binding-cells = <2>;
             tapping-term-ms = <tapping_term_fast>;//<205>;//<200>;
-            quick-tap-ms = <-1>;//<150>;
+            quick-tap-ms = <0>;//<150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         //     hold-trigger-key-positions = <KEYS_L THUMBS_L>;
@@ -163,7 +163,7 @@
             label = "LAYER_SFT_L";
             #binding-cells = <2>;
             tapping-term-ms = <tapping_term_fast>;//<205>;//<200>;
-            quick-tap-ms = <-1>;//<150>;
+            quick-tap-ms = <0>;//<150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&tog>;
         //     hold-trigger-key-positions = <KEYS_R THUMBS_R>;
@@ -175,7 +175,7 @@
             label = "LAYER_SFT_R";
             #binding-cells = <2>;
             tapping-term-ms = <tapping_term_fast>;//<205>;//<200>;
-            quick-tap-ms = <-1>;//<150>;
+            quick-tap-ms = <0>;//<150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&tog>;
         //     hold-trigger-key-positions = <KEYS_L THUMBS_L>;
