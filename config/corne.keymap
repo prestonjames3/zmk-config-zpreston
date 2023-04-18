@@ -205,30 +205,54 @@
     };
 
 
-    // macros {
-    //     zed_em_kay: zed_em_kay {
-    //         label = "ZM_zed_em_kay";
-    //         compatible = "zmk,behavior-macro";
-    //         #binding-cells = <0>;
-    //         bindings
-    //             = <&macro_press &kp LSHFT>
-    //             , <&macro_tap &kp Z &kp M &kp K>
-    //             , <&macro_release &kp LSHFT>
-    //             ;
-    //     };
-    //     brackets: brackets {
-    //         label = "brackets";
-    //         compatible = "zmk,behavior-macro";
-    //         #binding-cells = <0>;
-    //         wait-ms = <40>;
-    //         tap-ms = <40>;
-    //         bindings = <&macro_tap &kp LBKT &kp RBKT>;
-    //     };
-    //     // FSLH_ASTRK  &kp FSLH &kp ASTRK
-    //     // ASTRK_FSLH  &kp ASTRK &kp FSLH
-    //     // ONEPASS  "RedGr33nBlue"
-    //     // WRKPASS  "@11ig@toR1"
-    // };
+    macros {
+        fslh_astrk: fslh_astrk {
+            compatible = "zmk,behavior-macro";
+            label = "FSLH_ASTRK";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp FSLH &kp ASTRK>
+                ;
+        };
+        astrk_fslh: astrk_fslh {
+            compatible = "zmk,behavior-macro";
+            label = "ASTRK_FSLH";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp ASTRK &kp FSLH>
+                ;
+        };
+        onepass: onepass {
+            compatible = "zmk,behavior-macro";
+            label = "ONEPASS";
+            #binding-cells = <0>;
+            command = "RedGr33nBlue";
+        };
+        wrkpass: wrkpass {
+            compatible = "zmk,behavior-macro";
+            label = "WRKPASS";
+            #binding-cells = <0>;
+            command = "@11ig@toR1";
+        };
+        // zed_em_kay: zed_em_kay {
+        //     label = "ZM_zed_em_kay";
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings
+        //         = <&macro_press &kp LSHFT>
+        //         , <&macro_tap &kp Z &kp M &kp K>
+        //         , <&macro_release &kp LSHFT>
+        //         ;
+        // };
+        // brackets: brackets {
+        //     label = "brackets";
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     wait-ms = <40>;
+        //     tap-ms = <40>;
+        //     bindings = <&macro_tap &kp LBKT &kp RBKT>;
+        // };
+    };
 
 
         keymap {
@@ -311,7 +335,7 @@
 //                    |     | tog3 | SPC |   | ENT | tog3 |     |
 
                         bindings = <
-   &trans   &kp EXCL         &kp AT     &kp HASH        &kp DLLR         &trans                  &trans               &kp PRCNT  &kp CARET  &kp AMPS         &kp ASTRK          &trans
+   &trans   &kp EXCL         &kp AT     &kp HASH        &kp DLLR         &fslh_astrk             &astrk_fslh          &kp PRCNT  &kp CARET  &kp AMPS         &kp ASTRK          &trans
    &trans   &aml LCTRL ESC   &kp GRAVE  &kp LS(LA(F1))  &kp LC(LA(TAB))  &lpar_labkt             &rpar_rabkt          &kp LEFT   &kp UP     &kp DOWN         &kp RIGHT          &trans
    &trans   &kp LALT         &trans     &trans          &kp F2           &kp LBKT                &kp RBKT             &kp PG_UP  &kp PG_DN  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN  &trans
                     	                &trans          &tog 3           &asl LSHFT RET          &asr RSHFT DEL       &tog 3     &trans
@@ -341,7 +365,7 @@
                         bindings = <
    &trans  &kp F1          &kp F2     &kp F3   &kp F4   &kp F5                &kp F6         &kp F7        &kp F8        &kp F9         &kp F10    &trans
    &trans  &aml LCTRL F11  &kp F12    &trans   &trans   &bt BT_SEL 0          &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &kp RCTRL  &trans
-   &trans  &kp LALT        &kp LGUI   &trans   &trans   &trans                &bt BT_CLR     &trans        &trans        &kp RGUI       &kp RALT   &trans
+   &trans  &kp LALT        &kp LGUI   &trans   &onepass &wrkpass              &trans         &trans        &trans        &kp RGUI       &kp RALT   &trans
                                       &trans   &trans   &lsl LSHFT 3          &lsr RSHFT 3   &trans        &trans
                         >;
                 };
