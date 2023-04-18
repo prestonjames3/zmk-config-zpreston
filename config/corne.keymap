@@ -237,7 +237,7 @@
             #binding-cells = <0>;
             // command = "@11ig@toR1";
             bindings
-                = <&macro_tap &kp b>
+                = <&macro_tap &kp B>
                 ;
         };
         // zed_em_kay: zed_em_kay {
