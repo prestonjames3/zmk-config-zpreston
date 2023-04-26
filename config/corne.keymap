@@ -93,26 +93,86 @@
         //     tapping-term-ms = <tapping_term_fast>;//<200>;
         //     bindings = <&amr>, <&kp>;//<&mt LSHIFT CAPSLOCK>, <&kp LCTRL>;
         // };
-        td_amr_1: tap_dance_amr_rctrl_sqt_semi {
+
+        // td_aml_1: tap_dance_aml_lctrl_tab_caps {
+        //     compatible = "zmk,behavior-tap-dance";
+        //     label = "TAP_DANCE_AML_LCTRL_TAB_CAPS";
+        //     #binding-cells = <0>;
+        //     tapping-term-ms = <tapping_term_fast>;
+        //     bindings = <&aml LCTRL TAB>, <&kp CAPS>;
+        // };
+        // td_amr_1: tap_dance_amr_rctrl_sqt_semi {
+        //     compatible = "zmk,behavior-tap-dance";
+        //     label = "TAP_DANCE_AMR_RCTRL_SQT_SEMI";
+        //     #binding-cells = <0>;
+        //     tapping-term-ms = <tapping_term_fast>;
+        //     bindings = <&amr RCTRL SQT>, <&kp SEMI>;
+        // };
+        // td_amr_2: tap_dance_amr_ralt_fslh_bslh {
+        //     compatible = "zmk,behavior-tap-dance";
+        //     label = "TAP_DANCE_AMR_RALT_FSLH_BSLH";
+        //     #binding-cells = <0>;
+        //     tapping-term-ms = <tapping_term_fast>;
+        //     bindings = <&amr RALT FSLH>, <&kp BSLH>;
+        // };
+
+        td_l_1: tap_dance_tab_caps {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_AMR_RCTRL_SQT_SEMI";
+            label = "TAP_DANCE_TAB_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <tapping_term_fast>;
-            bindings = <&amr RCTRL SQT>, <&kp SEMI>;
+            bindings = <&kp TAB>, <&kp CAPS>;
+        };
+        td_r_1: tap_dance_sqt_semi {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_SQT_SEMI";
+            #binding-cells = <0>;
+            tapping-term-ms = <tapping_term_fast>;
+            bindings = <&kp SQT>, <&kp SEMI>;
+        };
+        td_r_2: tap_dance_fslh_bslh {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_FSLH_BSLH";
+            #binding-cells = <0>;
+            tapping-term-ms = <tapping_term_fast>;
+            bindings = <&kp FSLH>, <&kp BSLH>;
+        };
+
+        td_aml_1: tap_dance_aml_lctrl_tab_caps {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAP_DANCE_AML_LCTRL_TAB_CAPS";
+            #binding-cells = <2>;
+            tapping-term-ms = <tapping_term_slow>;//<215>;//<250>;
+            quick-tap-ms = <quick_tap_term>;//<200>;//<150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&td_l_1>;
+            // hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+            // hold-trigger-on-release;
+            // global-quick-tap;  // ???????????????
+        };
+        td_amr_1: tap_dance_amr_rctrl_sqt_semi {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAP_DANCE_AMR_RCTRL_SQT_SEMI";
+            #binding-cells = <2>;
+            tapping-term-ms = <tapping_term_slow>;//<215>;//<250>;
+            quick-tap-ms = <quick_tap_term>;//<200>;//<150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&td_r_1>;
+            // hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+            // hold-trigger-on-release;
+            // global-quick-tap;  // ???????????????
         };
         td_amr_2: tap_dance_amr_ralt_fslh_bslh {
-            compatible = "zmk,behavior-tap-dance";
+            compatible = "zmk,behavior-hold-tap";
             label = "TAP_DANCE_AMR_RALT_FSLH_BSLH";
-            #binding-cells = <0>;
-            tapping-term-ms = <tapping_term_fast>;
-            bindings = <&amr RALT FSLH>, <&kp BSLH>;
-        };
-        td_aml_1: tap_dance_aml_lctrl_tab_caps {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_AML_LCTRL_TAB_CAPS";
-            #binding-cells = <0>;
-            tapping-term-ms = <tapping_term_fast>;
-            bindings = <&aml LCTRL TAB>, <&kp CAPS>;
+            #binding-cells = <2>;
+            tapping-term-ms = <tapping_term_slow>;//<215>;//<250>;
+            quick-tap-ms = <quick_tap_term>;//<200>;//<150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&td_r_2>;
+            // hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+            // hold-trigger-on-release;
+            // global-quick-tap;  // ???????????????
         };
         // &td_mt_amr RCTRL SQT SEMI   // TD(TD_CTL_QUOT_SCLN)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
         // &td_mt_amr RALT FSLH BSLH   // TD(TD_ALT_SLSH_BSLS)  // ?  |  Do not select the hold action when another key is pressed. (get_hold_on_other_key_press = false)
