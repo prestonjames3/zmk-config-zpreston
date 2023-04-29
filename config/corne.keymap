@@ -8,18 +8,20 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-// Layer aliases
-#define DEF 0
-#define ONE 1
-#define TWO 2
-#define THR 3
+// // Layer aliases
+// #define DEF 0
+// #define ONE 1
+// #define TWO 2
+// #define THR 3
+// #define FOR 4
 
-// ?Key position groups?
-#define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
-#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
-#define THUMBS_L 36 37 38
-#define THUMBS_R 39 40 41
+// // ?Key position groups?
+// #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
+// #define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
+// #define THUMBS_L 36 37 38
+// #define THUMBS_R 39 40 41
 
+#define tapping_term_xfast 185
 #define tapping_term_fast 205
 #define tapping_term_slow 215
 #define quick_tap_term 200
@@ -98,21 +100,21 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_AML_LCTRL_TAB_CAPS";
             #binding-cells = <0>;
-            tapping-term-ms = <tapping_term_fast>;
+            tapping-term-ms = <tapping_term_xfast>;
             bindings = <&aml LCTRL TAB>, <&kp CAPS>;
         };
         td_amr_1: tap_dance_amr_rctrl_sqt_semi {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_AMR_RCTRL_SQT_SEMI";
             #binding-cells = <0>;
-            tapping-term-ms = <tapping_term_fast>;
+            tapping-term-ms = <tapping_term_xfast>;
             bindings = <&amr RCTRL SQT>, <&kp SEMI>;
         };
         td_amr_2: tap_dance_amr_ralt_fslh_bslh {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_AMR_RALT_FSLH_BSLH";
             #binding-cells = <0>;
-            tapping-term-ms = <tapping_term_fast>;
+            tapping-term-ms = <tapping_term_xfast>;
             bindings = <&amr RALT FSLH>, <&kp BSLH>;
         };
 
@@ -440,9 +442,20 @@
 
                         bindings = <
    &trans  &kp F1          &kp F2     &kp F3   &kp F4   &kp F5                &kp F6         &kp F7        &kp F8        &kp F9         &kp F10    &trans
-   &trans  &aml LCTRL F11  &kp F12    &trans   &trans   &bt BT_SEL 0          &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &kp RCTRL  &trans
-   &trans  &kp LALT        &kp LGUI   &trans   &onepass &wrkpass              &bt BT_CLR     &trans        &trans        &kp RGUI       &kp RALT   &trans
+   &trans  &aml LCTRL F11  &kp F12    &trans   &trans   &trans                &trans         &trans        &trans        &to 4          &kp RCTRL  &trans
+   &trans  &kp LALT        &kp LGUI   &trans   &onepass &wrkpass              &trans         &trans        &trans        &kp RGUI       &kp RALT   &trans
                                       &trans   &trans   &lsl LSHFT 3          &lsr RSHFT 3   &trans        &trans
+                        >;
+                };
+
+
+                layer_four {
+
+                        bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans                &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 0          &trans  &trans  &trans  &to 4   &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &bt BT_CLR            &trans  &trans  &trans  &trans  &trans  &trans
+                               &trans   &trans   &trans    &trans   &trans   &trans
                         >;
                 };
         };
