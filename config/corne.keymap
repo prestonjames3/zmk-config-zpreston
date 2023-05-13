@@ -389,8 +389,8 @@
 
                         bindings = <
    &trans   &kp N1     &kp N2     &kp N3       &kp N4      &kp N5               &kp N6           &kp N7      &kp N8      &kp N9      &kp N0           &trans
-   &trans   &td_aml_1 LCTRL 0  &kp PLUS   &kp MINUS    &kp UNDER   &kp EQUAL            &kp F5           &trans      &trans      &trans      &amr RCTRL SEMI  &trans
-   &trans   &kp LGUI   &kp LC(X)  &kp LC(V)    &kp LC(C)   &kp LC(FSLH)         &kp LC(R)        &kp LC(C)   &kp LC(V)   &kp LC(X)   &amr RGUI BSLH   &trans
+   &trans   &td_aml_1 LCTRL 0  &kp PLUS   &kp MINUS    &kp UNDER   &kp EQUAL            &kp F5           &trans      &trans      &trans      &amr RCTRL DQT  &trans
+   &trans   &kp LGUI   &kp LC(X)  &kp LC(V)    &kp LC(C)   &kp LC(FSLH)         &kp LC(R)        &kp LC(C)   &kp LC(V)   &kp LC(X)   &amr RGUI QMARK   &trans
                           	      &tog 3       &trans      &asl LSHFT RET       &asr RSHFT BSPC  &trans      &tog 3
                         >;
                 };
