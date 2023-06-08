@@ -367,7 +367,7 @@
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
                         bindings = <
-   &none   &kp Q          &kp W   &kp E        &kp R         &kp T                 &kp Y              &kp U         &kp I       &kp O     &kp P              &none
+   &none   &aml LGUI Q    &kp W   &kp E        &kp R         &kp T                 &kp Y              &kp U         &kp I       &kp O     &amr RGUI P        &none
    &none   &aml LCTRL A   &kp S   &kp D        &kp F         &kp G                 &kp H              &kp J         &kp K       &kp L     &td_amr_1 RCTRL 0  &none
    &none   &aml LALT Z    &kp X   &kp C        &kp V         &kp B                 &kp N              &kp M         &kp COMMA   &kp DOT   &td_amr_2 RALT 0   &none
                                   &clt 2 RET   &clt 1 BSPC   &asl LSHFT SPACE      &asr RSHFT SPACE   &mo 1         &mo 2
@@ -395,9 +395,9 @@
 //                    | tog3 |     | SPC |   | ENT |     | tog3 |
 
                         bindings = <
-   &none   &kp N1             &kp N2     &kp N3       &kp N4      &kp N5               &kp N6           &kp N7      &kp N8      &kp N9      &kp N0           &none
+   &none   &aml LGUI N1       &kp N2     &kp N3       &kp N4      &kp N5               &kp N6           &kp N7      &kp N8      &kp N9      &amr RGUI N0     &none
    &none   &td_aml_1 LCTRL 0  &kp PLUS   &kp MINUS    &kp UNDER   &kp EQUAL            &kp EQUAL        &kp UNDER   &kp MINUS   &kp PLUS    &amr RCTRL DQT   &none
-   &none   &kp LGUI           &kp LC(X)  &kp LC(V)    &kp LC(C)   &kp LC(FSLH)         &kp LA(LS(B))    &kp LC(C)   &kp LC(V)   &kp LC(X)   &amr RGUI QMARK  &none
+   &none   &kp LALT           &kp LC(X)  &kp LC(V)    &kp LC(C)   &kp LC(FSLH)         &kp LA(LS(B))    &kp LC(C)   &kp LC(V)   &kp LC(X)   &amr RALT QMARK  &none
                           	             &tog 3       &trans      &kp RET              &kp BSPC         &trans      &tog 3
                         >;
                 };
@@ -423,9 +423,9 @@
 //                    |     | tog3 | SPC |   | ENT | tog3 |     |
 
                         bindings = <
-   &none   &kp EXCL         &kp AT     &kp HASH        &kp DLLR         &fslh_astrk             &astrk_fslh          &kp PRCNT  &kp CARET  &kp AMPS         &kp ASTRK          &none
-   &none   &aml LCTRL ESC   &kp GRAVE  &kp LS(LA(F1))  &kp LC(LA(TAB))  &lpar_labkt             &rpar_rabkt          &kp LEFT   &kp UP     &kp DOWN         &kp RIGHT          &none
-   &none   &kp LALT         &none      &none           &kp F2           &kp LBKT                &kp RBKT             &kp PG_UP  &kp PG_DN  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN  &none
+   &none   &aml LGUI EXCL   &kp AT     &kp HASH        &kp DLLR         &fslh_astrk             &astrk_fslh          &kp PRCNT  &kp CARET  &kp AMPS         &kp ASTRK          &none
+   &none   &aml LCTRL ESC   &kp GRAVE  &kp LC(Z)       &kp LC(LA(TAB))  &lpar_labkt             &rpar_rabkt          &kp LEFT   &kp UP     &kp DOWN         &kp RIGHT          &none
+   &none   &kp LALT         &none      &kp LC(Y)       &kp F2           &kp LBKT                &kp RBKT             &kp PG_UP  &kp PG_DN  &kp K_SCROLL_UP  &kp K_SCROLL_DOWN  &none
                     	               &trans          &tog 3           &kp RS(RET)             &kp DEL              &tog 3     &trans
                         >;
                 };
@@ -451,9 +451,9 @@
 //                    |     |     | tog3 |   | tog3 |     |     |
 
                         bindings = <
-   &none  &kp F1          &kp F2     &kp F3   &kp F4   &kp F5                &kp F6         &kp F7        &kp F8        &kp F9         &kp F10    &none
-   &none  &aml LCTRL F11  &kp F12    &none    &none    &none                 &none          &none         &none         &to 4          &kp RCTRL  &none
-   &none  &kp LALT        &kp LGUI   &none    &onepass &wrkpass              &ploopy        &none         &none         &kp RGUI       &kp RALT   &none
+   &none  &aml LGUI F1    &kp F2     &kp F3   &kp F4   &kp F5                &kp F6         &kp F7        &kp F8        &kp F9         &amr RGUI F10  &none
+   &none  &aml LCTRL F11  &kp F12    &none    &none    &none                 &none          &none         &none         &to 4          &kp RCTRL      &none
+   &none  &kp LALT        &none      &none    &onepass &wrkpass              &ploopy        &none         &none         &none          &kp RALT       &none
                                      &trans   &trans   &lsl LSHFT 3          &lsr RSHFT 3   &trans        &trans
                         >;
                 };
